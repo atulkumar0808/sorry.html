@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>For Manya 💔</title>
+    <link href="https://fonts.googleapis.com/css2?family=Varela+Round&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+    
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background-color: #ffe6e9; /* Soft Pink */
+            font-family: 'Varela Round', sans-serif;
+            overflow: hidden;
+        }
+
+        .container {
+            text-align: center;
+            background: white;
+            padding: 40px;
+            border-radius: 25px;
+            box-shadow: 0 10px 25px rgba(255, 107, 129, 0.2);
+            max-width: 90%;
+            width: 400px;
+            position: relative;
+        }
+
+        h1 {
+            color: #ff6b81;
+            margin-bottom: 5px;
+            font-size: 28px;
+        }
+
+        /* MANYA'S NAME STYLE */
+        h2 {
+            color: #ff4757;
+            margin-top: 0;
+            margin-bottom: 20px;
+            font-size: 30px;
+            font-weight: 800;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        p {
+            color: #888;
+            margin-bottom: 25px;
+            font-size: 16px;
+            line-height: 1.5;
+        }
+
+        /* Container for the SVG images */
+        .image-container {
+            height: 180px; /* Fixed height to prevent jumping */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        /* Styling the SVG generated images */
+        .cute-cat-svg {
+            width: 150px;
+            height: 150px;
+            /* Adding a cute shadow to the vector image */
+            filter: drop-shadow(0px 4px 4px rgba(0,0,0,0.1));
+        }
+
+        .btn-group {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        button {
+            padding: 12px 25px;
+            border: none;
+            border-radius: 50px;
+            font-family: 'Varela Round', sans-serif;
+            font-size: 16px;
+            cursor: pointer;
+            transition: transform 0.2s, background 0.2s;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+
+        #yesBtn {
+            background-color: #2ed573;
+            color: white;
+            z-index: 10;
+        }
+
+        #yesBtn:hover {
+            background-color: #26af61;
+            transform: scale(1.05);
+        }
+
+        #noBtn {
+            background-color: #ff4757;
+            color: white;
+        }
+
+        #noBtn:hover {
+            background-color: #e84118;
+        }
+
+        .hidden {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <div id="ask-box">
+            <h1>Please forgive me... 🥺</h1>
+            <h2>MANYA ❤️</h2>
+            
+            <div class="image-container" id="sad-cat-container">
+                <svg class="cute-cat-svg" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+                    <circle cx="100" cy="100" r="90" fill="#f0e6ff"/> <path d="M30,40 L60,10 L90,40 Z" fill="#dcd0ff"/> <path d="M110,40 L140,10 L170,40 Z" fill="#dcd0ff"/> <ellipse cx="70" cy="90" rx="15" ry="20" fill="#5e4b8b"/> <ellipse cx="130" cy="90" rx="15" ry="20" fill="#5e4b8b"/> <circle cx="65" cy="85" r="5" fill="white"/> <circle cx="125" cy="85" r="5" fill="white"/> <path d="M90,120 Q100,130 110,120" stroke="#5e4b8b" stroke-width="5" fill="none"/> <path d="M70,140 Q100,160 130,140" stroke="#5e4b8b" stroke-width="5" fill="none"/> <ellipse cx="50" cy="115" rx="10" ry="5" fill="#ffb6c1" opacity="0.6"/> <ellipse cx="150" cy="115" rx="10" ry="5" fill="#ffb6c1" opacity="0.6"/> </svg>
+            </div>
+            <p id="message">I really messed up. Can we please fix this?</p>
+            
+            <div class="btn-group">
+                <button id="yesBtn" onclick="acceptApology()">Yes, I forgive you</button>
+                <button id="noBtn" onclick="denyApology()">No 😤</button>
+            </div>
+        </div>
+
+        <div id="success-box" class="hidden">
+            <h1>YAY! Thank you! 🎉</h1>
+            <h2>MANYA</h2>
+            <div class="image-container">
+                <svg class="cute-cat-svg" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+                     <circle cx="100" cy="100" r="90" fill="#fff0f5"/> <path d="M30,40 L60,10 L90,40 Z" fill="#ffe4e1"/> <path d="M110,40 L140,10 L170,40 Z" fill="#ffe4e1"/>
+                    <path d="M50,90 Q70,70 90,90" stroke="#ff6b81" stroke-width="5" fill="none"/> 
+                    <path d="M110,90 Q130,70 150,90" stroke="#ff6b81" stroke-width="5" fill="none"/>
+                    <path d="M85,120 Q100,140 115,120" stroke="#ff6b81" stroke-width="5" fill="none"/>
+                    <path d="M100,170 Q80,150 100,130 Q120,150 100,170 Z" fill="#ff4757"/>
+                </svg>
+            </div>
+            <p>You're the best! I love you so much! 😻</p>
+        </div>
+    </div>
+
+    <script>
+        // --- GENERATED CRYING CAT SVG CODE ---
+        // This is stored in a variable to inject when they click "No"
+        const cryingCatSVG = `
+        <svg class="cute-cat-svg" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="100" cy="100" r="90" fill="#e0f7fa"/> <path d="M30,40 L60,10 L90,40 Z" fill="#b2ebf2"/> <path d="M110,40 L140,10 L170,40 Z" fill="#b2ebf2"/>
+            <ellipse cx="70" cy="90" rx="15" ry="20" fill="#00bcd4"/> <ellipse cx="130" cy="90" rx="15" ry="20" fill="#00bcd4"/>
+            <path d="M70,140 Q100,170 130,140" stroke="#00bcd4" stroke-width="5" fill="none"/> <path d="M70,100 Q60,130 70,160" stroke="#29b6f6" stroke-width="8" fill="#4fc3f7"/>
+            <path d="M130,100 Q140,130 130,160" stroke="#29b6f6" stroke-width="8" fill="#4fc3f7"/>
+            <circle cx="60" cy="120" r="5" fill="#81d4fa"/>
+            <circle cx="140" cy="120" r="5" fill="#81d4fa"/>
+        </svg>
+        `;
+
+        // --- INTERACTIVITY CODE ---
+        let noClickCount = 0;
+        const noButton = document.getElementById('noBtn');
+        const yesButton = document.getElementById('yesBtn');
+        const sadCatContainer = document.getElementById('sad-cat-container');
+
+        const phrases = [
+            "No 😤",
+            "Are you sure?",
+            "Manya, please? 🥺",
+            "Don't do this...",
+            "I'm gonna cry...",
+            "Breaking my heart 💔",
+            "I'll buy you chocolates!",
+            "Pretty please?",
+            "Ok, I'm dead 💀"
+        ];
+
+        function denyApology() {
+            noClickCount++;
+            
+            // Change text of No button
+            if (noClickCount < phrases.length) {
+                noButton.innerText = phrases[noClickCount];
+            } else {
+                noButton.innerText = "Please Manya! 😭";
+            }
+
+            // Make Yes button grow
+            const currentSize = parseFloat(window.getComputedStyle(yesButton).fontSize);
+            const newSize = currentSize * 1.4;
+            yesButton.style.fontSize = `${newSize}px`;
+            
+            // IF they click No, inject the generated Crying Cat SVG
+            if(noClickCount > 0) {
+                 sadCatContainer.innerHTML = cryingCatSVG;
+            }
+        }
+
+        function acceptApology() {
+            document.getElementById('ask-box').style.display = 'none';
+            document.getElementById('success-box').classList.remove('hidden');
+            fireConfetti();
+        }
+
+        function fireConfetti() {
+            const duration = 3000;
+            const end = Date.now() + duration;
+
+            (function frame() {
+                confetti({
+                    particleCount: 5,
+                    angle: 60,
+                    spread: 55,
+                    origin: { x: 0 },
+                    colors: ['#ff6b81', '#2ed573']
+                });
+                confetti({
+                    particleCount: 5,
+                    angle: 120,
+                    spread: 55,
+                    origin: { x: 1 },
+                    colors: ['#ff6b81', '#2ed573']
+                });
+
+                if (Date.now() < end) {
+                    requestAnimationFrame(frame);
+                }
+            }());
+        }
+    </script>
+</body>
+</html>
